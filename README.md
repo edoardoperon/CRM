@@ -195,6 +195,29 @@ CCREATE TABLE dist_channel(
 
 (b) marginality per customer
 
+|c_name | sum|
+| ----------- | ----------- |
+|justvest|	13373|
+|zerosoar|	12287|
+|advertisingyern|	11207|
+|milksoul|	8177|
+|completeyeve|	7889|
+|germanwork|	7462|
+|ninjapick|	3500|
+|leadinglife|	3095|
+|earvary|	2864|
+|uberjust|	2765|
+|pixopen|	1620|
+|myhomeamin|	1505|
+|illinoisease|	875|
+|armypert|	740|
+|foxgiift|	490|
+|plasticdote|	420|
+|customerpoof|	280|
+|lucklook|	140|
+|socialmediaokey|	40|
+|archizero|	8|
+
 (c) marginality per single product
 
 (d) Calculate revenue per year
