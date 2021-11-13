@@ -122,7 +122,6 @@ CCREATE TABLE dist_channel(
 	dist_chann_id INTEGER PRIMARY KEY,
 	dist_chann_name VARCHAR(100)
 )
-![image](https://user-images.githubusercontent.com/93947541/141612592-a8fe41db-ad16-443b-a713-0e01d1c4aa25.png)
 ```
 
 # Output of the code
