@@ -220,7 +220,7 @@ FROM clients
 
 (a) what is the operating margin by distribution channel?
 
-| dist_chann_name | year |operative_margin|
+| dist_chann_id | year |operative_margin|
 | ----------- | ----------- | ----------- |
 | 1 |2020| 20783 |
 | 1 |2021| 5791 |
