@@ -24,13 +24,13 @@ More specifically, the database and the queries I have created should segment cu
 Thinking about how to structure the database tables I wanted to replicate the back-end of an ERP software.
 
 The tables I created are the following
-- Suppliers
-- Raw materials
-- Products
-- Rows invoices
-- Invoices
-- Clients
-- Distribution channels
+- (i) Suppliers
+- (ii) Raw materials
+- (iii) Products
+- (iv) Rows invoices
+- (v) Invoices
+- (vi) Clients
+- (vii) Distribution channels
 
 ## 2. Create tables
 
@@ -52,8 +52,20 @@ After the questions just mentioned I wanted to answer other questions such as:
 
 ## 5. Create view for each answer
 
-
+To store the answers to the queries I have created views, so if the question will be recurrent it will be easy to access them
 
 # Code
+
+## Create tables
+
+(i) Suppliers
+
+,CREATE TABLE suppliers(
+	s_id INTEGER PRIMARY KEY,
+	s_name VARCHAR(100),
+	s_telephone VARCHAR(50),
+	s_country VARCHAR(50),
+	s_active BOOLEAN
+),
 
 # Output of the code
