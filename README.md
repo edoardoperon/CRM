@@ -5,7 +5,7 @@ In this project, I designed and created a database similar to what a simplified 
 
 With this project I wanted to demonstrate my ability to:
 - Understand the logic of a database
-- Use basic (sum, extract, order by, etc.) and intermediate (pivoting, case/when, cast, inner join, group by, etc.) commands to extract data from a database
+- Use basic (sum, extract, order by, etc.) and intermediate (pivoting, case/when, cast, inner join, group by, etc.) commands to extract data from a database 
 
 The tools I used for the project are PostgresSQL and Excel.
 
