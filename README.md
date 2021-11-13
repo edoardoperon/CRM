@@ -32,7 +32,7 @@ The tables I created are the following
 - (vi) Clients: here will be contained the main information of the clients
 - (vii) Distribution channels: here will be the distribution channels, useful for customer segmentation
 
-![](https://github.com/edoardoperon/Edoardo_Peron_Portfolio/blob/main/images/erp_diagram.jpg)
+![](https://raw.githubusercontent.com/edoardoperon/Edoardo_Peron_Portfolio/main/images/erp_diagram.jpg)
 ## 3.2 Create tables
 
 The complex part in thinking about how to structure the database concerns the minimization of redundant data in the various tables and the effectiveness of the data in the database when it will be interrogated with queries.
