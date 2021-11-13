@@ -184,3 +184,18 @@ CCREATE TABLE dist_channel(
    FROM clients;
 ```
 # 5 Output of the code
+
+(a) what is the operating margin by distribution channel?
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+(b) marginality per customer
+
+(c) marginality per single product
+
+(d) Calculate revenue per year
+
+(e) Calculate the revenue per single month
+
+(f) Calculate the ratio of active customers to total customers
