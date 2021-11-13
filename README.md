@@ -148,11 +148,14 @@ ORDER BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
 (a.a) After extrapolating the data, it is possible to pivot it to get a more readable table.
 
 ```
-select dist_chann_id,
-	max(case when year = '2020' then operative_margin end) as "2020",
-	max(case when year = '2021' then operative_margin end) as "2021"
-from marginality_by_channel
-group by dist_chann_id
+SELECT dist_channel.dist_chann_name,
+	MAX(CASE WHEN year = '2020' THEN operative_margin END) AS "2020",
+	MAX(CASE WHEN year = '2021' THEN operative_margin END) AS "2021"
+FROM marginality_by_channel
+INNER JOIN dist_channel
+	ON marginality_by_channel.dist_chann_id = dist_channel.dist_chann_id
+GROUP BY dist_channel.dist_chann_name
+ORDER BY dist_channel.dist_chann_name DESC
 ```
 
 (b) marginality per customer
@@ -222,9 +225,9 @@ FROM clients
 
 | dist_chann_name | 2020 |2021|
 | ----------- | ----------- | ----------- |
-| 1 |20783| 5791 |
-| 2 |30362| 14501 |
-| 3 |2765| 4535 |
+| small |20783| 5791 |
+| medium |30362| 14501 |
+| large |2765| 4535 |
 
 (b) marginality per customer
 
