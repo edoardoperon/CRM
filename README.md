@@ -5,7 +5,7 @@ In this project, I designed and created a database similar to what a simplified 
 
 With this project I wanted to demonstrate my ability to:
 - Understand the logic of a database
-- Use basic and intermediate commands to extract data from a database
+- Use basic (sum, extract, order by, etc.) and intermediate (pivoting, case/when, cast, inner join, group by, etc.) commands to extract data from a database
 
 The tools I used for the project are PostgresSQL and Excel.
 
@@ -127,7 +127,7 @@ CREATE TABLE clients(
 ```
 (vii) Distribution channels
 ```
-CCREATE TABLE dist_channel(
+CREATE TABLE dist_channel(
 	dist_chann_id INTEGER PRIMARY KEY,
 	dist_chann_name VARCHAR(100)
 )
