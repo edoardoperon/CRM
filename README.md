@@ -308,4 +308,4 @@ FROM clients
 | ----------- |
 | 70 |
 
-Press [here](https://edoardoperon.github.io/Edoardo_Peron_Portfolio/) to return to the portfolio
+Press [here](https://edoardoperon.github.io/Edoardo_Peron_Portfolio/) to return in the portfolio.
