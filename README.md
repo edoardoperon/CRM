@@ -19,15 +19,33 @@ More specifically, the database and the queries I have created should segment cu
 
 # Phases of the project
 
-  ## 1. Thinking about the infostructure 
+## 1. Thinking about the infostructure
 
-  ## 2. Create tables
+Thinking about how to structure the database tables I wanted to replicate the back-end of an ERP software.
 
-  ## 3. Importing the data through csv file 
+The tables I created are the following
+- Suppliers
+- Raw materials
+- Products
+- Rows invoices
+- Invoices
+- Clients
+- Distribution channels
 
-  ## 4. Thinking about business questions
+## 2. Create tables
 
-  ## 5. Create view for each answer
+The complex part in thinking about how to structure the database concerns the minimization of redundant data in the various tables and the effectiveness of the data in the database when it will be interrogated with queries.
+
+## 3. Importing the data through csv file 
+
+To be faster and to experiment with the import/export features of PostgreSQL, I first populated the tables in Excel sheets and then they were massively imported into the tables created earlier in PostgreSQL.
+
+## 4. Thinking about business questions
+
+
+
+## 5. Create view for each answer
 
 # Code
 
+# Output of the code
