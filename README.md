@@ -42,9 +42,17 @@ To be faster and to experiment with the import/export features of PostgreSQL, I 
 
 ## 4. Thinking about business questions
 
+Customer segmentation has always been the main purpose of the project, so the key question is: (a) what is the operating margin by distribution channel?
+Then I went deeper and calculated the (b) marginality per customer and per (c) single product.
 
+After the questions just mentioned I wanted to answer other questions such as:
+(d) Calculate revenue per year
+(e) Calculate the revenue per single month
+(f) Calculate the ratio of active customers to total customers
 
 ## 5. Create view for each answer
+
+
 
 # Code
 
