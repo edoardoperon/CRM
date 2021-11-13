@@ -220,8 +220,46 @@ CCREATE TABLE dist_channel(
 
 (c) marginality per single product
 
+|p_name|marginality|
+| ----------- | ----------- |
+|jar|60|
+|wheel|35|
+|chair|37|
+|bottle|8|
+|bicycle|125|
+
 (d) Calculate revenue per year
+
+| amount | year |
+| ----------- | ----------- |
+| 1666 | 2021 |
+| 2756 | 2020 |
 
 (e) Calculate the revenue per single month
 
+|amount|year|
+| ----------- | ----------- |
+|431	|2020-01|
+|85	|2020-03|
+|458	|2020-06|
+|152	|2020-07|
+|74	|2020-08|
+|632	|2020-09|
+|250	|2020-10|
+|317	|2020-11|
+|357	|2020-12|
+|272	|2021-02|
+|60	|2021-03|
+|50	|2021-04|
+|50	|2021-05|
+|149	|2021-06|
+|28	|2021-07|
+|663	|2021-10|
+|300	|2021-11|
+|94	|2021-12|
+
 (f) Calculate the ratio of active customers to total customers
+
+| active_clients_rato |
+| ----------- |
+| 70 |
