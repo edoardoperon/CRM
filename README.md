@@ -129,53 +129,60 @@ CCREATE TABLE dist_channel(
 
 (a) what is the operating margin by distribution channel?
 ```
- SELECT dist_channel.dist_chann_name,
-    sum((products.p_price_per_unit - raw_materials.m_cost_per_unit) * rows_invoices.p_quantity) AS sum
-   FROM raw_materials
-     JOIN products ON raw_materials.m_id = products.m_id
-     JOIN rows_invoices ON products.p_id = rows_invoices.p_id
-     JOIN invoices ON rows_invoices.i_id = invoices.i_id
-     JOIN clients ON invoices.c_id = clients.c_id
-     JOIN dist_channel ON clients.dist_chann_id = dist_channel.dist_chann_id
-  GROUP BY dist_channel.dist_chann_id, (date_part('year'::text, invoices.i_date))
- HAVING date_part('year'::text, invoices.i_date) = 2021::double precision
-  ORDER BY dist_channel.dist_chann_id;
+SELECT dist_channel.dist_chann_name, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity)
+FROM raw_materials
+INNER JOIN products
+	ON raw_materials.m_id = products.m_id
+INNER JOIN rows_invoices
+	ON products.p_id = rows_invoices.p_id
+INNER JOIN invoices
+	ON rows_invoices.i_id = invoices.i_id
+INNER JOIN clients
+	ON invoices.c_id = clients.c_id
+INNER JOIN dist_channel
+	ON clients.dist_chann_id = dist_channel.dist_chann_id
+GROUP BY dist_channel.dist_chann_id, EXTRACT(year FROM i_date)
+HAVING EXTRACT(year FROM i_date) = 2021
+ORDER BY dist_channel.dist_chann_id
 ```
 (b) marginality per customer
 ```
- SELECT clients.c_name,
-    sum((products.p_price_per_unit - raw_materials.m_cost_per_unit) * rows_invoices.p_quantity) AS sum
-   FROM raw_materials
-     JOIN products ON raw_materials.m_id = products.m_id
-     JOIN rows_invoices ON products.p_id = rows_invoices.p_id
-     JOIN invoices ON rows_invoices.i_id = invoices.i_id
-     JOIN clients ON invoices.c_id = clients.c_id
-  GROUP BY clients.c_name
-  ORDER BY (sum((products.p_price_per_unit - raw_materials.m_cost_per_unit) * rows_invoices.p_quantity)) DESC;
+SELECT c_name, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity)
+from raw_materials
+INNER JOIN products
+	ON raw_materials.m_id = products.m_id
+INNER JOIN rows_invoices
+	ON products.p_id = rows_invoices.p_id
+INNER JOIN invoices
+	ON rows_invoices.i_id = invoices.i_id
+INNER JOIN clients
+	ON invoices.c_id = clients.c_id
+GROUP BY c_name
+ORDER BY SUM ((p_price_per_unit - m_cost_per_unit) * p_quantity) DESC
 ```
 (c) marginality per single product
 ```
- SELECT products.p_name,
-    products.p_price_per_unit - raw_materials.m_cost_per_unit AS marginality
-   FROM products
-     JOIN raw_materials ON products.m_id = raw_materials.m_id;
+SELECT p_name, (p_price_per_unit - m_cost_per_unit) AS marginality
+FROM products
+INNER JOIN raw_materials
+	ON products.m_id = raw_materials.m_id
 ```
 (d) Calculate revenue per year
 ```
- SELECT sum(rows_invoices.p_quantity * rows_invoices.p_id) AS amount,
-    date_part('year'::text, invoices.i_date) AS year
-   FROM rows_invoices
-     JOIN invoices ON invoices.i_id = rows_invoices.i_id
-  GROUP BY (date_part('year'::text, invoices.i_date));
+SELECT SUM(p_quantity * p_id) AS amount, EXTRACT(year FROM i_date) AS year
+FROM rows_invoices
+INNER JOIN invoices
+	ON invoices.i_id = rows_invoices.i_id
+GROUP BY EXTRACT(year FROM i_date)
 ```
 (e) Calculate the revenue per single month
 ```
- SELECT sum(rows_invoices.p_quantity * rows_invoices.p_id) AS amount,
-    to_char(invoices.i_date::timestamp with time zone, 'YYYY-MM'::text) AS year
-   FROM rows_invoices
-     JOIN invoices ON invoices.i_id = rows_invoices.i_id
-  GROUP BY (to_char(invoices.i_date::timestamp with time zone, 'YYYY-MM'::text))
-  ORDER BY (to_char(invoices.i_date::timestamp with time zone, 'YYYY-MM'::text));
+SELECT SUM(p_quantity * p_id) AS amount, TO_CHAR(i_date, 'YYYY-MM') AS year
+FROM rows_invoices
+INNER JOIN invoices
+	ON invoices.i_id = rows_invoices.i_id
+GROUP BY TO_CHAR(i_date, 'YYYY-MM')
+ORDER BY year
 ```
 (f) Calculate the ratio of active customers to total customers
 ```
