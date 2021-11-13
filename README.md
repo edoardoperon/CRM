@@ -144,6 +144,17 @@ INNER JOIN dist_channel
 GROUP BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
 ORDER BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
 ```
+
+(a.a) After extrapolating the data, it is possible to pivot it to get a more readable table.
+
+```
+select dist_chann_id,
+	max(case when year = '2020' then operative_margin end) as "2020",
+	max(case when year = '2021' then operative_margin end) as "2021"
+from marginality_by_channel
+group by dist_chann_id
+```
+
 (b) marginality per customer
 ```
 SELECT c_name, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity)
@@ -206,6 +217,14 @@ FROM clients
 | 3 |2021| 14501 |
 | 3 |2020| 2765 |
 | 3 |2021| 4535 |
+
+(a.a) pivoted data
+
+| dist_chann_name | 2020 |2021|
+| ----------- | ----------- | ----------- |
+| 1 |20783| 5791 |
+| 2 |30362| 14501 |
+| 3 |2765| 4535 |
 
 (b) marginality per customer
 
