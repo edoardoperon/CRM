@@ -48,13 +48,13 @@ Customer segmentation has always been the main purpose of the project, so the ke
 Then I went deeper and calculated the (b) marginality per customer and per (c) single product.
 
 After the questions just mentioned I wanted to answer other questions such as:
-(d) Calculate revenue per year
-(e) Calculate the revenue per single month
-(f) Calculate the ratio of active customers to total customers
+- (d) Calculate revenue per year
+- (e) Calculate the revenue per single month
+- (f) Calculate the ratio of active customers to total customers
 
 ## 3.5 Create view for each answer
 
-To store the answers to the queries I have created views, so if the question will be recurrent it will be easy to access them
+To store the answers to the queries I have created views, so if the question will be recurrent it will be easy to access them.
 
 # 4 Code
 
