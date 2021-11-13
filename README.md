@@ -129,7 +129,7 @@ CCREATE TABLE dist_channel(
 
 (a) what is the operating margin by distribution channel?
 ```
-SELECT dist_channel.dist_chann_name, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity)
+SELECT dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date) AS year, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity) AS operative_margin
 FROM raw_materials
 INNER JOIN products
 	ON raw_materials.m_id = products.m_id
@@ -141,9 +141,8 @@ INNER JOIN clients
 	ON invoices.c_id = clients.c_id
 INNER JOIN dist_channel
 	ON clients.dist_chann_id = dist_channel.dist_chann_id
-GROUP BY dist_channel.dist_chann_id, EXTRACT(year FROM i_date)
-HAVING EXTRACT(year FROM i_date) = 2021
-ORDER BY dist_channel.dist_chann_id
+GROUP BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
+ORDER BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
 ```
 (b) marginality per customer
 ```
@@ -199,11 +198,14 @@ FROM clients
 
 (a) what is the operating margin by distribution channel?
 
-| dist_chann_name | sum |
-| ----------- | ----------- |
-| small | 5791 |
-| medium | 14501 |
-| large | 4535 |
+| dist_chann_name | year |operative_margin|
+| ----------- | ----------- | ----------- |
+| 1 |2020| 20783 |
+| 1 |2021| 5791 |
+| 2 |2020| 30362 |
+| 3 |2021| 14501 |
+| 3 |2020| 2765 |
+| 3 |2021| 4535 |
 
 (b) marginality per customer
 
