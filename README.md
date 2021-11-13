@@ -40,6 +40,8 @@ The complex part in thinking about how to structure the database concerns the mi
 
 To be faster and to experiment with the import/export features of PostgreSQL, I first populated the tables in Excel sheets and then they were massively imported into the tables created earlier in PostgreSQL.
 
+Warning: the population of data entered in the tables were either randomized by Excel or invented by me.
+
 ## 3.4 Thinking about business questions
 
 Customer segmentation has always been the main purpose of the project, so the key question is: (a) what is the operating margin by distribution channel?
