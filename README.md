@@ -186,10 +186,13 @@ CCREATE TABLE dist_channel(
 # 5 Output of the code
 
 (a) what is the operating margin by distribution channel?
-| Syntax | Description |
+
+| dist_chann_name | sum |
 | ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+| small | 5791 |
+| medium | 14501 |
+| large | 4535 |
+
 (b) marginality per customer
 
 (c) marginality per single product
