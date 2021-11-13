@@ -63,7 +63,7 @@ To store the answers to the queries I have created views, so if the question wil
 (i) Suppliers
 ```
 CREATE TABLE suppliers(
-s_id INTEGER PRIMARY KEY,
+	s_id INTEGER PRIMARY KEY,
 	s_name VARCHAR(100),
 	s_telephone VARCHAR(50),
 	s_country VARCHAR(50),
