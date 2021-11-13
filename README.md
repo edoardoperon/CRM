@@ -32,7 +32,7 @@ The tables I created are the following
 - (vi) Clients: here will be contained the main information of the clients
 - (vii) Distribution channels: here will be the distribution channels, useful for customer segmentation
 
-![](https://github.com/edoardoperon/Edoardo_Peron_Portfolio/blob/main/images/ERP_diagram.jpg)
+![](https://github.com/edoardoperon/Edoardo_Peron_Portfolio/blob/main/images/ERP_diagram.png)
 
 ## 3.2 Create tables
 
