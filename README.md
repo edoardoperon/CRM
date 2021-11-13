@@ -179,12 +179,17 @@ CCREATE TABLE dist_channel(
 ```
 (f) Calculate the ratio of active customers to total customers
 ```
- SELECT sum(
-        CASE
-            WHEN clients.c_active IS TRUE THEN 1
-            ELSE 0
-        END)::double precision / count(*)::double precision * 100::double precision AS active_clients_ratio
-   FROM clients;
+SELECT(
+	CAST(
+		SUM(
+			CASE 
+				WHEN c_active IS true THEN 1
+		  		ELSE 0
+			END)
+	AS float) /
+	COUNT(*) * 100
+) AS active_clients_ratio
+FROM clients
 ```
 # 5 Output of the code
 
