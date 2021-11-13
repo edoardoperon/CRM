@@ -68,4 +68,6 @@ To store the answers to the queries I have created views, so if the question wil
 	s_active BOOLEAN
 )'
 
+`code`
+
 # Output of the code
