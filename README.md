@@ -1,7 +1,7 @@
 # Project 1: Segment Analysis through SQL
 
 # 1 Overview
-In this project, I designed and created a database similar to what a simplified corporate ERP might be. I wanted to segment customers by distribution channel and extrapolate business data.
+In this project, I designed and created a database similar to what a simplified Enterprise Resource Planning (ERP) might be. I wanted to segment customers by distribution channel and extrapolate some business data.
 
 With this project I wanted to demonstrate my ability to:
 - Understand the logic of a database
@@ -15,22 +15,22 @@ The two main goals I wanted to bring home with this project were:
 - Create a structured database like what a corporate ERP can be
 - Solve real questions that may be in an enterprise
 
-More specifically, the database and the queries I have created should segment customers and report margins by customer, distribution channel and single product.
+More specifically, the database and the queries I have created should segment customers and report margins by customer, distribution channel, single product, and so on.
 
 # 3 Phases of the project
 
 ## 3.1 Thinking about the infostructure
 
-Thinking about how to structure the database tables I wanted to replicate the back-end of an ERP software.
+Thinking about how to structure the database's tables I wanted to replicate the back-end of an ERP software.
 
 The tables I created are the following
-- (i) Suppliers
-- (ii) Raw materials
-- (iii) Products
-- (iv) Rows invoices
-- (v) Invoices
-- (vi) Clients
-- (vii) Distribution channels
+- (i) Suppliers: here will be contained the main information of the suppliers
+- (ii) Raw materials: here will be contained the main information of raw materials, a critical information will be the unit cost of them
+- (iii) Products: this table will contain product information such as name, price, type of raw material to create it, etc.
+- (iv) Rows invoices: here will be stored data about single lines in transactions between company and customers
+- (v) Invoices: here we could know the invoice date and reference customer 
+- (vi) Clients: here will be contained the main information of the clients
+- (vii) Distribution channels: here will be the distribution channels, useful for customer segmentation
 
 ## 3.2 Create tables
 
@@ -260,7 +260,7 @@ CCREATE TABLE dist_channel(
 |300	|2021-11|
 |94	|2021-12|
 
-(f) Calculate the ratio of active customers to total customers
+(f) Calculate the ratio of active customers to total customers (%)
 
 | active_clients_rato |
 | ----------- |
