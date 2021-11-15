@@ -214,7 +214,7 @@ FROM clients
 
 In this first output we can highlight three columns, in the first there is the name of the distribution channel, in the second the year of belonging and in the third the summed values referred to the previous columns.
 
-| Dist_chann_name | year |operative_margin|
+| dist_chann_name | year |operative_margin|
 | ----------- | ----------- | ----------- |
 | small |2020| 20783 |
 | small |2021| 5791 |
@@ -225,7 +225,7 @@ In this first output we can highlight three columns, in the first there is the n
 
 To make the previous table more readable, I pivoted the data and changed the identifier to the actual name of the distribution channel.
 
-| Distribution channel | 2020 |2021|
+| distribution channel | 2020 |2021|
 | ----------- | ----------- | ----------- |
 | small |20783| 5791 |
 | medium |30362| 14501 |
