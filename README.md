@@ -49,12 +49,12 @@ The complex part in thinking about how to structure the database concerns the mi
 
 To be faster and to experiment with the import/export features of PostgreSQL, I first populated the tables in Excel sheets and then they were massively imported into the tables created earlier in PostgreSQL.
 
-Warning: the population of data entered in the tables were either randomized by Excel or invented by me.
+**Warning: the population of data entered in the tables were either randomized by Excel or invented by me.**
 
 ## 3.4 Thinking about business questions
 
 Customer segmentation has always been the main purpose of the project, so the key question is: (a) what is the operating margin by distribution channel?
-Then I went deeper and calculated the (b) marginality per customer and per (c) single product.
+Then I went deeper and calculated the (b) operative margin per customer within all the years and per (c) single product.
 
 After the questions just mentioned I wanted to answer other questions such as:
 - (d) Calculate revenue per year
@@ -135,7 +135,7 @@ CREATE TABLE dist_channel(
 
 ## 4.2 Queries
 
-(a) what is the operating margin by distribution channel?
+(a) What is the operating margin by distribution channel?
 ```
 SELECT dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date) AS year, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity) AS operative_margin
 FROM raw_materials
@@ -166,10 +166,10 @@ GROUP BY dist_channel.dist_chann_name
 ORDER BY dist_channel.dist_chann_name DESC
 ```
 
-(b) marginality per customer
+(b) Operative margin per customer in all years
 ```
 SELECT c_name, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity)
-from raw_materials
+FROM raw_materials
 INNER JOIN products
 	ON raw_materials.m_id = products.m_id
 INNER JOIN rows_invoices
@@ -181,7 +181,7 @@ INNER JOIN clients
 GROUP BY c_name
 ORDER BY SUM ((p_price_per_unit - m_cost_per_unit) * p_quantity) DESC
 ```
-(c) marginality per single product
+(c) Unit operative margin per product
 ```
 SELECT p_name, (p_price_per_unit - m_cost_per_unit) AS marginality
 FROM products
@@ -205,7 +205,7 @@ INNER JOIN invoices
 GROUP BY TO_CHAR(i_date, 'YYYY-MM')
 ORDER BY year
 ```
-(f) Calculate the ratio of active customers to total customers
+(f) Calculate the ratio of active customers to total customers (%)
 ```
 SELECT( CAST( SUM(
 	CASE 
@@ -218,18 +218,18 @@ FROM clients
 ```
 # 5 Output of the code
 
-(a) what is the operating margin by distribution channel?
+(a) What is the operating margin by distribution channel?
 
 | dist_chann_id | year |operative_margin|
 | ----------- | ----------- | ----------- |
 | 1 |2020| 20783 |
 | 1 |2021| 5791 |
 | 2 |2020| 30362 |
-| 3 |2021| 14501 |
+| 2 |2021| 14501 |
 | 3 |2020| 2765 |
 | 3 |2021| 4535 |
 
-(a.a) pivoted data
+(a.a) After extrapolating the data, it is possible to pivot it to get a more readable table.
 
 | dist_chann_name | 2020 |2021|
 | ----------- | ----------- | ----------- |
@@ -237,7 +237,7 @@ FROM clients
 | medium |30362| 14501 |
 | large |2765| 4535 |
 
-(b) marginality per customer
+(b) Operative margin per customer in all years
 
 |c_name | sum|
 | ----------- | ----------- |
@@ -262,7 +262,7 @@ FROM clients
 |socialmediaokey|	40|
 |archizero|	8|
 
-(c) marginality per single product
+(c) Unit operative margin per product
 
 |p_name|marginality|
 | ----------- | ----------- |
