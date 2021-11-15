@@ -137,35 +137,27 @@ CREATE TABLE dist_channel(
 
 (a) What is the operating margin by distribution channel?
 ```
-SELECT dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date) AS year, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity) AS operative_margin
-FROM raw_materials
-INNER JOIN products
-	ON raw_materials.m_id = products.m_id
-INNER JOIN rows_invoices
-	ON products.p_id = rows_invoices.p_id
-INNER JOIN invoices
-	ON rows_invoices.i_id = invoices.i_id
-INNER JOIN clients
-	ON invoices.c_id = clients.c_id
-INNER JOIN dist_channel
-	ON clients.dist_chann_id = dist_channel.dist_chann_id
-GROUP BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
-ORDER BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
+SELECT *
+FROM  crosstab(
+	$$
+	SELECT dist_channel.dist_chann_name, EXTRACT(YEAR FROM i_date) AS year, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity) AS operative_margin
+	FROM raw_materials
+	INNER JOIN products
+		ON raw_materials.m_id = products.m_id
+	INNER JOIN rows_invoices
+		ON products.p_id = rows_invoices.p_id
+	INNER JOIN invoices
+		ON rows_invoices.i_id = invoices.i_id
+	INNER JOIN clients
+		ON invoices.c_id = clients.c_id
+	INNER JOIN dist_channel
+		ON clients.dist_chann_id = dist_channel.dist_chann_id
+	GROUP BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
+	ORDER BY dist_channel.dist_chann_id, EXTRACT(YEAR FROM i_date)
+	$$, 
+	'VALUES (2020), (2021)'
+) AS pivot ("Distribution channel" text, "2020" int, "2021" int)
 ```
-
-(a.a) After extrapolating the data, it is possible to pivot it to get a more readable table.
-
-```
-SELECT dist_channel.dist_chann_name,
-	MAX(CASE WHEN year = '2020' THEN operative_margin END) AS "2020",
-	MAX(CASE WHEN year = '2021' THEN operative_margin END) AS "2021"
-FROM marginality_by_channel
-INNER JOIN dist_channel
-	ON marginality_by_channel.dist_chann_id = dist_channel.dist_chann_id
-GROUP BY dist_channel.dist_chann_name
-ORDER BY dist_channel.dist_chann_name DESC
-```
-
 (b) Operative margin per customer in all years
 ```
 SELECT c_name, SUM((p_price_per_unit - m_cost_per_unit) * p_quantity)
@@ -221,21 +213,9 @@ FROM clients
 (a) What is the operating margin by distribution channel?
 
 In this first output we can highlight three columns, in the first there is the identification of the distribution channel, in the second the year of belonging and in the third the summed values referred to the previous columns.
-
-| dist_chann_id | year |operative_margin|
-| ----------- | ----------- | ----------- |
-| 1 |2020| 20783 |
-| 1 |2021| 5791 |
-| 2 |2020| 30362 |
-| 2 |2021| 14501 |
-| 3 |2020| 2765 |
-| 3 |2021| 4535 |
-
-(a.a) After extrapolating the data, it is possible to pivot it to get a more readable table.
-
 To make the previous table more readable, I pivoted the data and changed the identifier to the actual name of the distribution channel.
 
-| dist_chann_name | 2020 |2021|
+| Distribution channel | 2020 |2021|
 | ----------- | ----------- | ----------- |
 | small |20783| 5791 |
 | medium |30362| 14501 |
