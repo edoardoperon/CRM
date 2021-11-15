@@ -212,7 +212,17 @@ FROM clients
 
 (a) What is the operating margin by distribution channel?
 
-In this first output we can highlight three columns, in the first there is the identification of the distribution channel, in the second the year of belonging and in the third the summed values referred to the previous columns.
+In this first output we can highlight three columns, in the first there is the name of the distribution channel, in the second the year of belonging and in the third the summed values referred to the previous columns.
+
+| Dist_chann_name | year |operative_margin|
+| ----------- | ----------- | ----------- |
+| small |2020| 20783 |
+| small |2021| 5791 |
+| medium |2020| 30362 |
+| medium |2021| 14501 |
+| large |2020| 2765 |
+| large |2021| 4535 |
+
 To make the previous table more readable, I pivoted the data and changed the identifier to the actual name of the distribution channel.
 
 | Distribution channel | 2020 |2021|
