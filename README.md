@@ -11,7 +11,7 @@ The tools I used for the project are PostgresSQL and Excel.
 
 Operating margin by distribution channel:
 
-| dist_chann_name | 2020 |2021|
+| distribution channel | 2020 |2021|
 | ----------- | ----------- | ----------- |
 | small |20783| 5791 |
 | medium |30362| 14501 |
