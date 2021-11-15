@@ -220,6 +220,8 @@ FROM clients
 
 (a) What is the operating margin by distribution channel?
 
+In this first output we can highlight three columns, in the first there is the identification of the distribution channel, in the second the year of belonging and in the third the summed values referred to the previous columns.
+
 | dist_chann_id | year |operative_margin|
 | ----------- | ----------- | ----------- |
 | 1 |2020| 20783 |
@@ -231,6 +233,8 @@ FROM clients
 
 (a.a) After extrapolating the data, it is possible to pivot it to get a more readable table.
 
+To make the previous table more readable, I pivoted the data and changed the identifier to the actual name of the distribution channel.
+
 | dist_chann_name | 2020 |2021|
 | ----------- | ----------- | ----------- |
 | small |20783| 5791 |
@@ -238,6 +242,8 @@ FROM clients
 | large |2765| 4535 |
 
 (b) Operative margin per customer in all years
+
+In the first column there are the names of the customers, in the second column the sum of the operating margin (found as price * quantity - unit cost * quantity), the data refers to both years considered.
 
 |c_name | sum|
 | ----------- | ----------- |
@@ -264,6 +270,8 @@ FROM clients
 
 (c) Unit operative margin per product
 
+In the first column there are the names of the products, in the second there is the operating margin (found as price - unit cost), the figure is unitary, that is how much the company margins for a single product sold.
+
 |p_name|marginality|
 | ----------- | ----------- |
 |jar|60|
@@ -274,12 +282,16 @@ FROM clients
 
 (d) Calculate revenue per year
 
+Here we have the sum of the unpacked revenue by individual year.
+
 | amount | year |
 | ----------- | ----------- |
 | 1666 | 2021 |
 | 2756 | 2020 |
 
 (e) Calculate the revenue per single month
+
+Here we have the sum of the unpacked revenue by individual month.
 
 |amount|year|
 | ----------- | ----------- |
@@ -303,6 +315,8 @@ FROM clients
 |94	|2021-12|
 
 (f) Calculate the ratio of active customers to total customers (%)
+
+With this output I wanted to answer the question: how many are your actual active customers? In the customers table there is a column of boolean type that can help us I simply counted the active customers and divided by the total customers.
 
 | active_clients_rato |
 | ----------- |
