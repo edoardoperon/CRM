@@ -31,7 +31,7 @@ More specifically, the database and the queries I have created should segment cu
 
 Thinking about how to structure the database's tables I wanted to replicate the back-end of an ERP software.
 
-The tables I created are the following
+The tables I created are the following:
 - (i) Suppliers: here will be contained the main information of the suppliers
 - (ii) Raw materials: here will be contained the main information of raw materials, a critical information will be the unit cost of them
 - (iii) Products: this table will contain product information such as name, price, type of raw material to create it, etc.
